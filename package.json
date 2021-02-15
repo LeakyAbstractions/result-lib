@@ -1,0 +1,19 @@
+{
+  "name":           "result",
+  "version":        "1.0.0.0",
+  "description":    "A tiny C library to handle success and failure like a boss",
+  "repo":           "LeakyAbstractions/result-lib",
+  "license":        "LGPL",
+  "install":        "autoreconf --install && ./configure && make install",
+  "src": [
+    "src/result.h"
+  ],
+  "keywords": [
+    "result",
+    "library",
+    "c",
+    "error-handling",
+    "success",
+    "failure"
+  ]
+}
