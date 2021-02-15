@@ -1,12 +1,49 @@
 
 # result
 
+[![Last release](https://img.shields.io/github/tag/LeakyAbstractions/log.svg?label=release&colorB=007ec6)](https://github.com/LeakyAbstractions/log/releases)
+[![Build status](https://travis-ci.org/LeakyAbstractions/log.svg?branch=master)](https://travis-ci.org/LeakyAbstractions/log)
+[![Code coverage](https://codecov.io/github/LeakyAbstractions/log/coverage.svg?branch=master)](https://codecov.io/github/LeakyAbstractions/log?branch=master)
+[![Static analysis](https://scan.coverity.com/projects/14165/badge.svg)](https://scan.coverity.com/projects/leakyabstractions-log)
+
 > Handle success/failure results
+
+![](https://github.com/LeakyAbstractions/result-lib/raw/master/doc/result-banner-centered.png)
 
 
 ## A tiny C result library
 
 Handle success and failure like a boss.
+
+> This software adheres to [Pragmatic Versioning](https://pragver.github.io/).
+
+
+## API
+
+
+### Macros
+
+- `result_of`: Define result structure
+- `result_failure`: Create new failed result object
+- `result_success`: Create new successful result object
+- `result_is_failure`: Check if failed result
+- `result_is_success`: Check if successful result
+- `result_get_failure_or_else`: Return failure value or evaluate expression
+- `result_get_success_or_else`: Return success value or evaluate expression
+- `result_get_success_or_else_map`: Return success value or transform failure value
+- `result_filter`: Transform into a failed result if success value does not match a predicate
+- `result_map`: Transform success/failure value
+- `result_map_failure`: Transform failure value
+- `result_map_success`: Transform success value
+- `result_flat_map`: Transform success/failure into a result object
+- `result_flat_map_failure`: Transform failure into a result object
+- `result_flat_map_success`: Transform success into a result object
+- `result_handle`: Pass success/failure value to function
+- `result_handle_failure`: Pass failure value to function
+- `result_handle_success`: Pass success value to function
+- `result_if_success_or_else`: Execute block of code depending on failed/successful result
+- `result_if_failure`: Execute block of code if failed result
+- `result_if_success`: Execute block of code if successful result
 
 
 ## Author

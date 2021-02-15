@@ -1,0 +1,5 @@
+theme: jekyll-theme-leap-day
+title: Result Library for C
+description: A tiny C library to handle success and failure like a boss
+current_version: 1.0.0.0
+show_downloads: true
