@@ -1,0 +1,9 @@
+prefix=@prefix@
+exec_prefix=@exec_prefix@
+libdir=@libdir@
+includedir=${prefix}/include
+
+Name: result
+Description: A tiny C library to handle success and failure like a boss
+Version: @VERSION@
+Cflags: -I${includedir}
