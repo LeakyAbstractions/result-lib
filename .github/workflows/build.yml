@@ -1,0 +1,59 @@
+
+# Continuous Integration
+name: Build
+
+on:
+  push:
+    branches:
+    - '*'
+  pull_request:
+    branches:
+    - main
+    - develop
+
+jobs:
+  build:
+
+    name: Build
+    runs-on: ubuntu-latest
+
+    steps:
+
+    # ================================
+    # VERSIONS
+    # ================================
+    - name: Versions
+      run: |
+        gcc --version
+        make --version
+        autoreconf --version
+
+    # ================================
+    # CHECKOUT
+    # ================================
+    - uses: actions/checkout@v2
+
+    # ================================
+    # AUTO CONFIGURE
+    # ================================
+    - name: Auto Configure
+      run: autoreconf --verbose --install && ./configure
+
+    # ================================
+    # TEST
+    # ================================
+    - name: Test
+      run: make --debug=b check
+
+    # ================================
+    # BUILD ANNOTATIONS
+    # ================================
+    - name: Annotations
+      run: |
+          SKIP=`grep  '# SKIP:'  test-suite.log | cut -d: -f2`
+          [$SKIP  -gt 0 ] && printf "##[warning]SKIP: %d\n" $SKIP
+          for ID in XFAIL FAIL XPASS ERROR; do
+            NUM=`grep "# $ID:" test-suite.log | cut -d: -f2`;
+            [$NUM -gt 0 ] && printf "##[error]$ID: %d\n" $NUM;
+          done
+          exit 0
